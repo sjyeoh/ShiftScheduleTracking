@@ -1,9 +1,9 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, PrimaryColumn} from "typeorm";
 
 @Entity()
-export class User {
+export class UserLog {
 
-    @PrimaryGeneratedColumn()
+    @PrimaryColumn()
     id: number;
 
     @Column()
@@ -33,7 +33,7 @@ export class User {
     @Column()
     updatedBy: string;
 
-    @Column()
+    @PrimaryColumn()
     updateFrequency: number;
 
 }

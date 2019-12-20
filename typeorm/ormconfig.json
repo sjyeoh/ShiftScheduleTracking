@@ -1,9 +1,9 @@
 {
    "type": "mssql",
    "host": "localhost",
-   "username": "sa",
-   "password": "Admin12345",
-   "database": "tempdb",
+   "username": "brian",
+   "password": "admin@1234",
+   "database": "ShiftScheduleTracking",
    "synchronize": true,
    "logging": false,
    "entities": [
