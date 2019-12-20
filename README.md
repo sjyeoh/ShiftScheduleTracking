@@ -116,25 +116,30 @@ List user based on status
 `status` - String, exact match
 ### GET /users{access}
 List user based on access
+
 **Query Params**
 `access` - string, exact match
 ---
 ### POST /users
 create new user
+
 **Sample Response**
 New user created
 ---
 ### PUT /users
 Update user's details
+
 **Query Params**
 `ID` - number, exact match
 ---
 ### DELETE /users
 Delete user
+
 **Query Params**
 `ID` - number, exact match
 ---
 ### GET /users/{id}/records
 get records by user id
+
 **Query Params**
 `ID` - number, exact match
