@@ -95,3 +95,46 @@ Delete record based on record id
     }
 ]
 ``
+
+
+
+### GET /users
+List all users, can be searched or sorted
+**Query Params**
+`name` - String, will fuzzy search using `Like '%name%'`
+### GET /users{id}
+List user based on ID
+**Query Params**
+`id` - number, exact match
+### GET /users{group}
+List user based upon group
+**Query Params**
+`group` - number, exact match
+### GET /users{status}
+List user based on status
+**Query Params**
+`status` - String, exact match
+### GET /users{access}
+List user based on access
+**Query Params**
+`access` - string, exact match
+---
+### POST /users
+create new user
+**Sample Response**
+New user created
+---
+### PUT /users
+Update user's details
+**Query Params**
+`ID` - number, exact match
+---
+### DELETE /users
+Delete user
+**Query Params**
+`ID` - number, exact match
+---
+### GET /users/{id}/records
+get records by user id
+**Query Params**
+`ID` - number, exact match
