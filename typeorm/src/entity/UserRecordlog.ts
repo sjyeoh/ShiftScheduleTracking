@@ -1,25 +1,20 @@
+
 import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
 
 @Entity()
-export class User {
+export class UserRecordlog {
 
-    @PrimaryGeneratedColumn()
+    @Column()
     id: number;
 
     @Column()
-    fullName: string;
+    userID: number;
+
+    @Column({type:'date'})
+    applyDate: Date;
 
     @Column()
-    group: number;
-
-    @Column()
-    totalLeave: number;
-
-    @Column()
-    status: string;
-
-    @Column()
-    access: string;
+    leaveType: string;
 
     @Column({type:'date'})
     createdAt: Date;
