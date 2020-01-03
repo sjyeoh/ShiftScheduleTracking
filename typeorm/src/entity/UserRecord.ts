@@ -4,8 +4,6 @@ import { User } from "./User";
 @Entity()
 export class UserRecord {
 
-
-
     @PrimaryGeneratedColumn()
     id: number;
 

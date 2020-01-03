@@ -36,4 +36,5 @@ export class UserLog {
     @PrimaryColumn()
     updateFrequency: number;
 
+
 }

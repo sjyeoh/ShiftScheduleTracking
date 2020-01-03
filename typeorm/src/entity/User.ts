@@ -1,18 +1,39 @@
 import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
 
-@Entity()
+@Entity({name: "users"})
 export class User {
 
     @PrimaryGeneratedColumn()
     id: number;
 
     @Column()
-    firstName: string;
+    fullName: string;
 
     @Column()
-    lastName: string;
+    team: number;
 
     @Column()
-    age: number;
+    totalLeave: number;
+
+    @Column()
+    status: string;
+
+    @Column()
+    access: string;
+
+    @Column({type:'date'})
+    createdAt: Date;
+
+    @Column()
+    createdBy: string;
+
+    @Column({type:'date'})
+    updatedAt: Date;
+
+    @Column()
+    updatedBy: string;
+
+    @Column()
+    updateFrequency: number;
 
 }
