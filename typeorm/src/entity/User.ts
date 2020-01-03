@@ -7,33 +7,12 @@ export class User {
     id: number;
 
     @Column()
-    fullName: string;
+    firstName: string;
 
     @Column()
-    group: number;
+    lastName: string;
 
     @Column()
-    totalLeave: number;
-
-    @Column()
-    status: string;
-
-    @Column()
-    access: string;
-
-    @Column({type:'date'})
-    createdAt: Date;
-
-    @Column()
-    createdBy: string;
-
-    @Column({type:'date'})
-    updatedAt: Date;
-
-    @Column()
-    updatedBy: string;
-
-    @Column()
-    updateFrequency: number;
+    age: number;
 
 }
