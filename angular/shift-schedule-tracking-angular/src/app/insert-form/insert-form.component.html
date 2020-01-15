@@ -1,0 +1,28 @@
+<form [formGroup]="insertForm" (ngSubmit)="onSubmit()">
+  <div>
+    Applicant Name
+    <select formControlName="name">
+      <option *ngFor="let user of users" [value]="user.id">
+        {{user.fullName}}
+      </option>
+    </select>
+  </div>
+  <div>
+    Leave type
+    <select formControlName="leave">
+      <option value="AL">Annual Leave</option>
+      <option value="MC">Medical Leave</option>
+    </select>
+  </div>
+  <div>
+    Date Apply
+    <input type="text" formControlName="dateApply" placeholder="yyyy-mm-dd" />
+  <input formControlName="dateApply" matInput [matDatepicker]="picker" placeholder="Choose a date"
+      readonly="readonly">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </div>
+  <div>
+    <input type="submit" value="Submit" />
+  </div>
+</form>
