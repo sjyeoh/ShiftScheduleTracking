@@ -57,11 +57,11 @@ public class UserRecordController {
             userrecord.setLeaveType(userrecord.getLeaveType());  
             Date date = new Date(System.currentTimeMillis());
             userrecord.setApplyDate(userrecord.getApplyDate());
-            userrecord.setCreatedAt(date);
-            userrecord.setCreatedBy("BF");
+            //userrecord.setCreatedAt(date);
+            //userrecord.setCreatedBy("SystemAdmin");
             userrecord.setUpdatedAt(date);
-            userrecord.setUpdatedBy("bf");
-            userrecord.setUpdateFrequency(0);
+            userrecord.setUpdatedBy("SystemAdmin");
+            //userrecord.setUpdateFrequency(0);
             userrecord.setUser_id(userrecord.getUser_id());
 
             userrecordRepo.save(userrecord);

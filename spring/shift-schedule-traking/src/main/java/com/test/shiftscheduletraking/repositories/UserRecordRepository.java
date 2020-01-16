@@ -24,8 +24,8 @@ public interface UserRecordRepository extends JpaRepository<UserRecord, Long> {
    // @Query("SELECT u FROM UserRecord u WHERE u.fullName like %:name% ")
     //public List<UserRecord> findByfullName(String fullName);
 
-    @Query("SELECT u FROM UserRecord u WHERE u.id = :id")
-    public List<UserRecord> findByUserId(@Param("id") Long id);
+    @Query("SELECT u FROM UserRecord u WHERE u.UserId = :UserId")
+    public List<UserRecord> findByUserId(@Param("UserId") Long UserId);
 
     @Query("SELECT u FROM UserRecord u WHERE u.leaveType = :leaveType")
     public List<UserRecord> findByType(@Param("leaveType") String leaveType);

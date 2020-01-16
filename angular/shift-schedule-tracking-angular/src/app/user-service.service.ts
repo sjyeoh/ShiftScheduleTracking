@@ -19,6 +19,13 @@ export class UserService {
     return this.http.get(`${BASE_URL}/user/`)
   }
 
+  getRecordByUser(userId) {
+    return this.http.get(`${BASE_URL}/userrecords?id=${userId}`)
+  }
+
+  getAllRecord(){
+    return this.http.get(`${BASE_URL}/userrecords`)
+  }
   // insertRecord(createdAt,createdBy,updatedAt,updatedBy,updateFrequency,user_id,leaveType,applyDate){
   //   const params = {
   //     createdAt: createdAt,
