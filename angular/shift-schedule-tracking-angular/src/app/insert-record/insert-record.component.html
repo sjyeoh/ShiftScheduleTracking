@@ -1,0 +1,69 @@
+<form >
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Leave Record</h4>
+            <p class="card-category">Complete your record</p>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="insertForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-md-8">
+                  <mat-form-field class="example-full-width">
+                    <mat-select formControlName="name" placeholder="Name">
+                      <mat-option *ngFor="let user of users" [value]="user.id">{{user.fullName}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <!-- <mat-form-field class="example-full-width ">
+                              <input matInput class="btn-secondary dropdown-toggle" placeholder="Name" type="text" d="ddlName" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            </mat-form-field> -->
+                  <!-- <div class="dropdown"> -->
+                  <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="ddlName" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    CHOOSE NAME
+                  </button> -->
+                  <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div> -->
+                  <!-- </div> -->
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="ddlLeave" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Choose Leave Type
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Annual Leave</a>
+                    <a class="dropdown-item" href="#">Medical Leave</a>
+                  </div> -->
+                  <mat-form-field class="example-full-width ">
+                    <mat-select formControlName="leave" placeholder="Leave Type">
+                      <mat-option value="AL">Annual Leave</mat-option>
+                      <mat-option value="MC">Medical Leave</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                  <input matInput formControlName="dateApply" [matDatepicker]="picker" placeholder="Choose a date">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+                </div>
+              </div>
+              <button mat-raised-button type="submit" class="btn btn-danger pull-right" >SAVE</button>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
