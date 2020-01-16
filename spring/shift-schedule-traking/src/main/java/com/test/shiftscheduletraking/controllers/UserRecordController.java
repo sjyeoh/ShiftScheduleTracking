@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import com.test.shiftscheduletraking.entities.UserRecord;
 import com.test.shiftscheduletraking.repositories.*;
@@ -20,6 +22,7 @@ import com.test.shiftscheduletraking.repositories.*;
 @RestController
 public class UserRecordController {
 
+    private static final Object json = null;
     @Autowired
     UserRecordRepository userrecordRepo;
 
@@ -41,7 +44,7 @@ public class UserRecordController {
     }
 
     @PostMapping(value="/userrecord")
-    public String Create(
+    public ResponseEntity<Object> Create(
         @RequestBody UserRecord userrecord
         // @RequestParam(name="fullName",required=false) String fullName,
         // @RequestParam(name="group",required=false) Integer group,
@@ -53,7 +56,7 @@ public class UserRecordController {
         {
             userrecord.setLeaveType(userrecord.getLeaveType());  
             Date date = new Date(System.currentTimeMillis());
-            userrecord.setApplyDate(date);
+            userrecord.setApplyDate(userrecord.getApplyDate());
             userrecord.setCreatedAt(date);
             userrecord.setCreatedBy("BF");
             userrecord.setUpdatedAt(date);
@@ -62,9 +65,9 @@ public class UserRecordController {
             userrecord.setUser_id(userrecord.getUser_id());
 
             userrecordRepo.save(userrecord);
-            return "User Record Updated";
+            return ResponseEntity.ok(json);
         }else {
-            return "Please key in all required values";
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
     }
 

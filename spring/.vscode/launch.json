@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-DemoApplication<shift-schedule-traking>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.test.shiftscheduletraking.DemoApplication",
+            "projectName": "shift-schedule-traking",
+            "args": ""
+        }
+    ]
+}
