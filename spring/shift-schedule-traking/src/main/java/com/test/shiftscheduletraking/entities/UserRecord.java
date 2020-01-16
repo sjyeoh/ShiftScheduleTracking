@@ -24,8 +24,8 @@ public class UserRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column
-  private int user_id;
+  @Column(name="user_id")
+  private Long UserId;
 
   @Column
   private Date applyDate;
@@ -57,12 +57,12 @@ public class UserRecord {
         this.id = id;
     }
 
-    public int getUser_id() {
-        return this.user_id;
+    public Long getUser_id() {
+        return this.UserId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUser_id(Long UserId) {
+        this.UserId = UserId;
     }
 
     public Date getApplyDate() {
