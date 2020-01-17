@@ -4,7 +4,7 @@ import {Entity, PrimaryGeneratedColumn, Column, PrimaryColumn} from "typeorm";
 @Entity()
 export class UserRecordlog {
 
-    @PrimaryColumn()
+    @Column()
     id: number;
 
     @Column()
@@ -28,7 +28,7 @@ export class UserRecordlog {
     @Column()
     updatedBy: string;
 
-    @PrimaryColumn()
+    @Column()
     updateFrequency: number;
 
 }
