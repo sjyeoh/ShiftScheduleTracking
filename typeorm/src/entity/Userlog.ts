@@ -3,14 +3,14 @@ import {Entity, PrimaryGeneratedColumn, Column, PrimaryColumn} from "typeorm";
 @Entity()
 export class UserLog {
 
-    @PrimaryColumn()
+    @Column()
     id: number;
 
     @Column()
     fullName: string;
 
     @Column()
-    group: number;
+    team: number;
 
     @Column()
     totalLeave: number;
@@ -33,7 +33,7 @@ export class UserLog {
     @Column()
     updatedBy: string;
 
-    @PrimaryColumn()
+    @Column()
     updateFrequency: number;
 
 

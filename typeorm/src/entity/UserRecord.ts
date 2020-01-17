@@ -7,10 +7,6 @@ export class UserRecord {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @ManyToOne(type=>User)
-    @JoinColumn({name:'user_id'})
-    user : User
-
     @Column({type:'date'})
     applyDate: Date;
 
@@ -32,4 +28,7 @@ export class UserRecord {
     @Column()
     updateFrequency: number;
 
+    @ManyToOne(type=>User)
+    @JoinColumn({name:'user_id'})
+    user : User
 }
