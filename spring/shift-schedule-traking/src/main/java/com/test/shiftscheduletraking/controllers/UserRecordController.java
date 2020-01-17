@@ -17,7 +17,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.test.shiftscheduletraking.entities.UserRecord;
-import com.test.shiftscheduletraking.repositories.*;
+//import com.test.shiftscheduletraking.entities.User;
+import com.test.shiftscheduletraking.repositories.UserRecordRepository;
+import com.test.shiftscheduletraking.repositories.UserRepository;;
 
 @RestController
 public class UserRecordController {
@@ -26,15 +28,17 @@ public class UserRecordController {
     @Autowired
     UserRecordRepository userrecordRepo;
 
+    @Autowired
+    UserRepository userRepo;
+
     @GetMapping(value = "/userrecords")
-    public List<UserRecord> index(
-            @RequestParam(name = "fullName", required = false) String fullName,
-            @RequestParam(name="id",required=false) Long id,
+    public List<UserRecord> index(@RequestParam(name = "fullName", required = false) String fullName,
+            @RequestParam(name = "id", required = false) Long id,
             @RequestParam(name = "leaveType", required = false) String leaveType
 
     ) {
-        //if (fullName != null) {
-           // return userrecordRepo.findByfullName(fullName);
+        // if (fullName != null) {
+        // return userrecordRepo.findByfullName(fullName);
         if (id != null) {
             return userrecordRepo.findByUserId(id);
         } else if (leaveType != null) {
@@ -43,74 +47,67 @@ public class UserRecordController {
         return userrecordRepo.findAll();
     }
 
-    @PostMapping(value="/userrecord")
-    public ResponseEntity<Object> Create(
-        @RequestBody UserRecord userrecord
-        // @RequestParam(name="fullName",required=false) String fullName,
-        // @RequestParam(name="group",required=false) Integer group,
-        // @RequestParam(name="access",required=false) String access
-    ){
-        if(/*userrecord.getId() <=2 ||userrecord.getId() >=1)*/
-        /*userrecord.getApplyDate()!=null && userrecord.getLeaveType()!=null)*/ 
-        userrecord.getLeaveType()!=null)
-        {
-            userrecord.setLeaveType(userrecord.getLeaveType());  
+    @PostMapping(value = "/userrecord")
+    public ResponseEntity<Object> Create(@RequestBody UserRecord userrecord
+    // @RequestParam(name="fullName",required=false) String fullName,
+    // @RequestParam(name="group",required=false) Integer group,
+    // @RequestParam(name="access",required=false) String access
+    ) {
+        if (/* userrecord.getId() <=2 ||userrecord.getId() >=1) */
+        /* userrecord.getApplyDate()!=null && userrecord.getLeaveType()!=null) */
+        userrecord.getLeaveType() != null) {
+            userrecord.setLeaveType(userrecord.getLeaveType());
             Date date = new Date(System.currentTimeMillis());
             userrecord.setApplyDate(userrecord.getApplyDate());
-            //userrecord.setCreatedAt(date);
-            //userrecord.setCreatedBy("SystemAdmin");
+            // userrecord.setCreatedAt(date);
+            // userrecord.setCreatedBy("SystemAdmin");
             userrecord.setUpdatedAt(date);
             userrecord.setUpdatedBy("SystemAdmin");
-            //userrecord.setUpdateFrequency(0);
+            // userrecord.setUpdateFrequency(0);
             userrecord.setUser_id(userrecord.getUser_id());
 
             userrecordRepo.save(userrecord);
             return ResponseEntity.ok(json);
-        }else {
+        } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
     }
 
-    
     @PutMapping(value = "/userrecord/{id}")
-    public String update(
-        @PathVariable("id") Long id, 
-        //@RequestBody String leaveType,
-        //@RequestBody Date applyDate)
-        @RequestBody UserRecord data)
-        {
-                if(id!=null){
-                    UserRecord record  = userrecordRepo.searchById(id);
-                    record.setLeaveType(data.getLeaveType());
-                    Date date = new Date(System.currentTimeMillis());
-                    record.setCreatedAt(date);
-                    record.setCreatedBy("BF");
-                    record.setUpdatedAt(date);
-                    record.setUpdateFrequency(0);
-            
-                    userrecordRepo.save(record);
-                    return "Data updated";
-                }else{
-                    return "Please key in all required values";
-                }    
-            }
-    
+    public String update(@PathVariable("id") Long id,
+            // @RequestBody String leaveType,
+            // @RequestBody Date applyDate)
+            @RequestBody UserRecord data) {
+        if (id != null) {
+            UserRecord record = userrecordRepo.searchById(id);
+            record.setLeaveType(data.getLeaveType());
+            Date date = new Date(System.currentTimeMillis());
+            record.setCreatedAt(date);
+            record.setCreatedBy("BF");
+            record.setUpdatedAt(date);
+            record.setUpdateFrequency(0);
 
+            userrecordRepo.save(record);
+            return "Data updated";
+        } else {
+            return "Please key in all required values";
+        }
+    }
 
-   // @DeleteMapping(value = "/userrecords/{id}")
-   // public void delete(@PathVariable("id") Long id){
-  //      UserRecord userrecord = userrecordRepo.findById(id).orElse(null);
-   //     userrecordRepo.delete(userrecord);
-  //  }
+    // @DeleteMapping(value = "/userrecords/{id}")
+    // public void delete(@PathVariable("id") Long id){
+    // UserRecord userrecord = userrecordRepo.findById(id).orElse(null);
+    // userrecordRepo.delete(userrecord);
+    // }
 
-    @DeleteMapping(value="/userrecords/{id}")
-    public String delete(@PathVariable("id") Long id){
+    @DeleteMapping(value = "/userrecords/{id}")
+    public String delete(@PathVariable("id") Long id) {
         UserRecord record = userrecordRepo.searchById(id);
 
-        if(record != null){
+        if (record != null) {
             userrecordRepo.delete(record);
             return "User successfully deleted";
-        }else{
+        } else {
             return "User doesn't exist";
         }
     }

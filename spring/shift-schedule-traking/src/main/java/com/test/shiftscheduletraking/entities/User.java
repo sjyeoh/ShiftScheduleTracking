@@ -1,13 +1,21 @@
 package com.test.shiftscheduletraking.entities;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+// import com.fasterxml.jackson.annotation.JsonBackReference;
+// import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+// import com.fasterxml.jackson.annotation.JsonProperty;
+// import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
 @Table(name="users")
@@ -46,6 +54,26 @@ public class User {
     @Column()
     private int updateFrequency;
 
+    @JsonIgnoreProperties("user")
+    @OneToMany(mappedBy = "user")
+    private Set<UserRecord> userRecord;
+
+    public int getTeam() {
+        return this.team;
+    }
+
+    public void setTeam(int team) {
+        this.team = team;
+    }
+
+    public Set<UserRecord> getUserRecord() {
+        return this.userRecord;
+    }
+
+    public void setUserRecord(Set<UserRecord> userRecord) {
+        this.userRecord = userRecord;
+    }
+    
     public Long getId() {
         return this.id;
     }
