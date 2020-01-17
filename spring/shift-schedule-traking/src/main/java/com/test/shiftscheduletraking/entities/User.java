@@ -54,9 +54,9 @@ public class User {
     @Column()
     private int updateFrequency;
 
-    @JsonIgnoreProperties("user")
-    @OneToMany(mappedBy = "user")
-    private Set<UserRecord> userRecord;
+    // @JsonIgnoreProperties("user")
+    // @OneToMany(mappedBy = "user")
+    // private Set<UserRecord> userRecord;
 
     public int getTeam() {
         return this.team;
@@ -66,13 +66,13 @@ public class User {
         this.team = team;
     }
 
-    public Set<UserRecord> getUserRecord() {
-        return this.userRecord;
-    }
+    // public Set<UserRecord> getUserRecord() {
+    //     return this.userRecord;
+    // }
 
-    public void setUserRecord(Set<UserRecord> userRecord) {
-        this.userRecord = userRecord;
-    }
+    // public void setUserRecord(Set<UserRecord> userRecord) {
+    //     this.userRecord = userRecord;
+    // }
     
     public Long getId() {
         return this.id;
