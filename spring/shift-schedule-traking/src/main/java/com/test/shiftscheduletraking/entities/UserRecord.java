@@ -6,48 +6,54 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
-//mport javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 //import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import java.util.Date;
 
-//import com.fasterxml.jackson.annotation.JsonBackReference;
-//import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table (name = "user_record")
+@Table(name = "user_record")
 public class UserRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+    private Long id;
 
-  @Column(name="user_id")
-  private Long UserId;
+    @Column(name = "user_id",insertable = false, updatable = false)
+    private Long UserId;
 
-  @Column
-  private Date applyDate;
+    @JsonIgnoreProperties("userrecord")
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-  @Column
-  private String leaveType;
+    @Column
+    private Date applyDate;
 
-  @Column
-  private Date createdAt;
+    @Column
+    private String leaveType;
 
-  @Column
-  private String createdBy;
+    @Column
+    private Date createdAt;
 
-  @Column
-  private Date updatedAt;
+    @Column
+    private String createdBy;
 
-  @Column
-  private String updatedBy;
+    @Column
+    private Date updatedAt;
 
-  @Column
-  private int updateFrequency;
+    @Column
+    private String updatedBy;
 
+    @Column
+    private int updateFrequency;
 
     public Long getId() {
         return this.id;
@@ -120,7 +126,13 @@ public class UserRecord {
     public void setUpdateFrequency(int updateFrequency) {
         this.updateFrequency = updateFrequency;
     }
- 
 
+    public User getUser() {
+        return this.user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
 }

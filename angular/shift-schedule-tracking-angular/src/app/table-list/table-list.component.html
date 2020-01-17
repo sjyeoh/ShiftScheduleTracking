@@ -40,6 +40,9 @@
                                     <th>
                                         Leave Type
                                     </th>
+                                    <th>
+                                        Name
+                                    </th>
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let record of userrecord; let num = index">
@@ -53,6 +56,9 @@
                                         <td> 
                                             {{record.leaveType == 'AL'? 'Annual Leave' :record.leaveType == 'MC'? 'Medical Leave' : 'Invalid Code' }}
                                             ({{record.leaveType}})
+                                        </td>
+                                        <td>
+                                            {{record.user.fullName}}
                                         </td>
                                     </tr>
                                 </tbody>
