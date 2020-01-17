@@ -47,9 +47,10 @@ export class InsertRecordComponent implements OnInit {
     // console.log(this.createdBy)
     // console.log(this.insertForm.value)
     // main function call
+    console.log(formValues.name)
     this.userService.insertRecord(
       //this.datePipe.transform(this.createdAt,'yyyy-MM-dd'),
-      //this.createdBy,
+      //this.createdBy,q
       //this.datePipe.transform(this.updatedAt,'yyyy-MM-dd'),
       //this.updatedBy,
       //this.updateFrequency,

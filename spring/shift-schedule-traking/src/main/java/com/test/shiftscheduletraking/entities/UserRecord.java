@@ -26,13 +26,14 @@ public class UserRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "user_id",insertable = false, updatable = false)
+    @Column(name = "user_id")
+    //@Column(name = "user_id",insertable = false, updatable = false)
     private Long UserId;
 
-    @JsonIgnoreProperties("userrecord")
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    // @JsonIgnoreProperties("userrecord")
+    // @ManyToOne
+    // @JoinColumn(name = "user_id")
+    // private User user;
 
     @Column
     private Date applyDate;
@@ -127,12 +128,12 @@ public class UserRecord {
         this.updateFrequency = updateFrequency;
     }
 
-    public User getUser() {
-        return this.user;
-    }
+    // public User getUser() {
+    //     return this.user;
+    // }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+    // public void setUser(User user) {
+    //     this.user = user;
+    // }
 
 }
